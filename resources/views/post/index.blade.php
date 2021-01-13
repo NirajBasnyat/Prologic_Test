@@ -2,43 +2,28 @@
 
 @section('content')
 
-<div class="card mt-3">
-
-    <div class="card-body table-responsive">
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Post Title</th>
-                    <th>Created At</th>
-                    <th>
-                        <a href="{{route('post.create')}}"><i class="fas fa-plus text-info"></i> Add Post</a>
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @forelse($posts as $post)
-                <tr>
-                    <td><a href="{{route('post.show',$post->slug)}}">{{$post->title}}</a></td>
-                    <td>{{$post->created_at->diffForHumans()}}</td>
-                    <td>
-                        <a href="{{route('post.edit',$post->slug)}}"><i class="far fa-edit text-info"></i></a>
-                    </td>
-                    <td>
-                        <form action="{{ route('post.destroy', $post->slug) }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn btn-sm btn-default"><i class="fas fa-trash-alt text-danger"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <p class="mt-5 text-center mb-5">You don't have any post post</p>
-                @endforelse
-            </tbody>
-        </table>
+<div class="card">
+    <div class="card-body">
+        {!! $dataTable->table() !!}
     </div>
 </div>
+
+@endsection
+
+@section('js')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+</script>
+
+<script src="http://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+<script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
+
+{!! $dataTable->scripts() !!}
+
 @endsection

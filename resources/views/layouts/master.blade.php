@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Prologic Test Case</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -13,6 +13,7 @@
         crossorigin="anonymous" />
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
     @yield('third_party_stylesheets')
 
@@ -46,7 +47,7 @@
 
     <!-- REQUIRED SCRIPTS -->
 
-    <script src="{{ mix('js/app.js') }}" ></script>
+    <script src="{{ mix('js/app.js') }}"></script>
     {{-- toastr notifications --}}
     <script src="{{asset('js/toastr.min.js')}}"></script>
     <script>
@@ -63,9 +64,9 @@
         @endif
     </script>
 
+    @stack('page_scripts')
     @yield('js')
 
-    @stack('page_scripts')
 </body>
 
 </html>

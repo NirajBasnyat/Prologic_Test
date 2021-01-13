@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\DataTables\PostDataTable;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,9 +15,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(PostDataTable $postDataTable)
     {
-        return view('post.index')->with('posts', Post::all(['id', 'title', 'slug', 'created_at']));
+         return $postDataTable->render('post.index');
+        // return DataTables::of(Post::query())->make(true);
+        // return view('post.index')->with('posts', Post::all(['id', 'title', 'slug', 'created_at']));
     }
 
     /**
