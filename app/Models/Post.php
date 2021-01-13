@@ -30,8 +30,8 @@ class Post extends Model
 
     public function image_path()
     {
+        
         $profile_src = 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg';
-
         if ($this->image) {
             return '/storage/post_images/' . $this->image;
         }
