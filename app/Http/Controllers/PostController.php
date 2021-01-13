@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -14,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('post.index')->with('posts', Post::all(['id', 'title', 'slug', 'created_at']));
     }
 
     /**
@@ -24,7 +26,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create', [
+            'categories' => Category::all(['id', 'name'])
+        ]);
     }
 
     /**
@@ -33,9 +37,19 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $post = Post::create($request->validated());
+
+        if ($request->hasFile('image')) {
+            $request_image = $request->file('image');
+            $filename = time() . '.' . $request_image->GetClientOriginalExtension();
+            $path = $request_image->storeAs('public/post_images', $filename);
+            $post->image = $filename;
+            $post->save();
+        }
+
+        return redirect('/post')->with('success', 'Post created suceessfully.');
     }
 
     /**
@@ -46,7 +60,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -57,7 +71,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', [
+            'post' => $post,
+            'categories' => Category::all(['id', 'name'])
+        ]);
     }
 
     /**
@@ -67,9 +84,23 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        $old_image = $post->image;
+        $post->update($request->validated());
+
+        if ($request->hasFile('image')) {
+            //deletes old file before uploading new one
+            Storage::delete('public/post_images/' . $old_image);
+
+            $request_image = $request->file('image');
+            $filename = time() . '.' . $request_image->GetClientOriginalExtension();
+            $path = $request_image->storeAs('public/post_images', $filename);
+            $post->image = $filename;
+            $post->save();
+        }
+
+        return redirect('/post')->with('success', 'Post updated suceessfully.');
     }
 
     /**
@@ -80,6 +111,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        Storage::delete('public/post_images/' . $post->image);
+        $post->delete();
+        return redirect('/post')->with('error', 'Post deleted suceessfully.');
     }
 }

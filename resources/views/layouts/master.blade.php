@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 
 <head>
@@ -17,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         crossorigin="anonymous" />
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
     @yield('third_party_stylesheets')
 
     @stack('page_css')
@@ -50,7 +46,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- REQUIRED SCRIPTS -->
 
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" ></script>
+    {{-- toastr notifications --}}
+    <script src="{{asset('js/toastr.min.js')}}"></script>
+    <script>
+        @if (Session::has('success'))
+        toastr.success("{{Session::get('success')}}")
+        @endif
+        
+        @if (Session::has('error'))
+        toastr.error("{{Session::get('error')}}")
+        @endif
+        
+        @if (Session::has('info'))
+        toastr.info("{{Session::get('info')}}")
+        @endif
+    </script>
 
     @yield('third_party_scripts')
 
