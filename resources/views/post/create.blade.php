@@ -2,16 +2,7 @@
 
 @section('content')
 
-{{-- errors --}}
-@if($errors->any())
-<div class="alert alert-danger my-4">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+@include('inc.errors')
 
 <div class="card card-primary mt-3">
     <div class="card-header">
@@ -38,7 +29,7 @@
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" rows="3" name="description">{{old('description')}}</textarea>
+                <textarea class="form-control" rows="3" name="description" id="article-ckeditor">{{old('description')}}</textarea>
             </div>
 
             <div class="form-group">
@@ -58,4 +49,12 @@
         </div>
     </form>
 </div>
+@endsection
+
+@section('js')
+
+<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('article-ckeditor');
+</script>
 @endsection

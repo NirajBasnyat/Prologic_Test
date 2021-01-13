@@ -63,7 +63,7 @@
         @endif
     </script>
 
-    @yield('third_party_scripts')
+    @yield('js')
 
     @stack('page_scripts')
 </body>

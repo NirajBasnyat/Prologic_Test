@@ -25,7 +25,6 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-th-large"></i>
                         <p>
                             Posts
                             <i class="right fas fa-angle-left"></i>
@@ -48,7 +47,6 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
                         <p>
                             Link for Category 
                         </p>

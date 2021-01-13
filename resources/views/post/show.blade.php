@@ -8,7 +8,7 @@
     <div class="card-body">
         <h1 class="">{{$post->title}}</h1><br>
         <h2>Category: <span class="badge badge-secondary">{{$post->category->name}}</span></h2> <br>
-        <p class="card-text h4">{{$post->description}} </p>
+        <p class="card-text h4">{!!$post->description!!} </p>
     </div>
 </div>
 @endsection
