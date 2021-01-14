@@ -26,7 +26,7 @@
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->created_at->diffForHumans()}}</td>
                                     <td><a href="{{route('post_show',$post->slug)}}"
-                                            class="btn btn-sm btn-outline-info">View Post</a>
+                                            class="btn btn-sm btn-outline-info  ">View Post</a>
                                     </td>
                                 </tr>
                                 @endforeach
