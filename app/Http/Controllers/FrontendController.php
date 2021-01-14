@@ -5,20 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function dashboard()
     {
-        return view(
-            'dashboard',
-            [
-                'user_count' => User::all()->count(),
-                'post_count' => Post::all()->count(),
-                'category_count' => Category::all()->count()
-            ]
-        );
+        return view('dashboard', [
+            'user_count' => User::all()->count(),
+            'post_count' => Post::all()->count(),
+            'category_count' => Category::all()->count()
+        ]);
     }
 
     public function frontend()
