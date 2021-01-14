@@ -17,6 +17,7 @@
                                 <tr>
                                     <th>Post</th>
                                     <th>Created at</th>
+                                    <th>view</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -24,6 +25,9 @@
                                 <tr>
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->created_at->diffForHumans()}}</td>
+                                    <td><a href="{{route('post_show',$post->slug)}}"
+                                            class="btn btn-sm btn-outline-info">View Post</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

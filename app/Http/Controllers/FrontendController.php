@@ -24,6 +24,7 @@ class FrontendController extends Controller
     public function frontend()
     {
         return view('frontend', [
+            'posts' => Post::with('category')->paginate(5),
             'categories' => Category::all(['id', 'name'])
         ]);
     }
@@ -31,8 +32,14 @@ class FrontendController extends Controller
     //post based on the category
     public function category_post($category_id)
     {
-        return view('category_post', [
+        return view('frontend.category_post', [
             'category_posts' => Post::where('category_id', $category_id)->get()
         ]);
     }
+
+    public function post_show(Post $post)
+    {
+        return view('frontend.single_post', compact('post'));
+    }
+
 }

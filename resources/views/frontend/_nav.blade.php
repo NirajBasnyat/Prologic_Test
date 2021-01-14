@@ -4,8 +4,7 @@
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><img src="{{asset('app/images/icons/ham.png')}}" alt="ham" height="20px"
-                    width=40px"></span>
+            <span class="navbar-toggler-icon" ><i class="fas fa-hamburger fa-xs"></i></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor01">
@@ -34,6 +33,8 @@
 
 
 <div class="hero mb-3">
+
+    <h3 class="text-center pt-5 text-white" style="padding-top:300px !important;">Welcome to our Blog site</h3>
 </div>
 
 

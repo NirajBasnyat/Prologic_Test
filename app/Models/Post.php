@@ -43,4 +43,9 @@ class Post extends Model
     {
         return 'slug';
     }
+
+    public function getSubDescriptionAttribute()
+    {
+        return Str::substr($this->description, 1,30).'...';
+    }
 }

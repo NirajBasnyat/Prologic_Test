@@ -6,6 +6,9 @@
 
 @include('frontend._nav')
 
+<!-- ******************** POSTS - SECTION ************************ -->
+@include('frontend._posts')
+
 <!-- ******************** CATEGORY - SECTION ************************ -->
 
 @include('frontend._category')

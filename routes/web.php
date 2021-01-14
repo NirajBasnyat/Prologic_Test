@@ -6,6 +6,7 @@ use App\Http\Controllers\FrontendController;
 
 // routes for frontend
 Route::get('/',[FrontendController::class,'frontend'])->name('frontend');
+Route::get('/post/single/{post}', [FrontendController::class,'post_show'])->name('post_show');
 Route::get('/category_post/{category_id}', [FrontendController::class,'category_post'])->name('category_post');
 
 //routes for auth users
