@@ -17,9 +17,7 @@ class PostController extends Controller
      */
     public function index(PostDataTable $postDataTable)
     {
-         return $postDataTable->render('post.index');
-        // return DataTables::of(Post::query())->make(true);
-        // return view('post.index')->with('posts', Post::all(['id', 'title', 'slug', 'created_at']));
+        return $postDataTable->render('post.index');
     }
 
     /**
@@ -91,6 +89,11 @@ class PostController extends Controller
     {
         $old_image = $post->image;
         $post->update($request->validated());
+
+        if ($request->is_published == null) {
+            $post->is_published = 0;
+            $post->save();
+        }
 
         if ($request->hasFile('image')) {
             //deletes old file before uploading new one

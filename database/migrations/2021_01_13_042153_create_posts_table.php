@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->string('image')->nullable();
             $table->mediumText('description');
+            $table->boolean('is_published')->default(false);
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });

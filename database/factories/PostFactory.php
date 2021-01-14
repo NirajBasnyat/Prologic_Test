@@ -27,6 +27,7 @@ class PostFactory extends Factory
         return [
             'title' => $title,
             'slug' => Str::slug($title),
+            'is_published' => $this->faker->boolean($chanceOfGettingTrue = 50),
             'description' => $this->faker->sentence(10),
             'category_id' => Category::all()->random()
         ];

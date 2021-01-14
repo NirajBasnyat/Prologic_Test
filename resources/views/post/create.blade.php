@@ -29,7 +29,15 @@
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" rows="3" name="description" id="article-ckeditor">{{old('description')}}</textarea>
+                <textarea class="form-control" rows="3" name="description"
+                    id="article-ckeditor">{{old('description')}}</textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch" name="is_published" value="1">
+                    <label class="custom-control-label" for="customSwitch">Is published</label>
+                </div>
             </div>
 
             <div class="form-group">

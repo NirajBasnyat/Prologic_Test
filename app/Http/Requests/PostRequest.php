@@ -26,6 +26,7 @@ class PostRequest extends FormRequest
         return [
             'title' => 'required|string|max:200',
             'slug' => 'unique:posts,slug',
+            'is_published' => 'boolean',
             'description' => 'required|string|min:4',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|numeric'

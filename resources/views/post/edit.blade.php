@@ -22,9 +22,8 @@
                 <label>Select category</label>
                 <select name="category_id" class="form-control">
                     @foreach($categories as $category)
-                    <option value="{{$category->id}}"
-                        @if($category->id == $post->category_id)
-                        selected 
+                    <option value="{{$category->id}}" @if($category->id == $post->category_id)
+                        selected
                         @endif
                         >{{$category->name}}</option>
                     @endforeach
@@ -33,7 +32,16 @@
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" rows="3" name="description" id="article-ckeditor">{{$post->description}}</textarea>
+                <textarea class="form-control" rows="3" name="description"
+                    id="article-ckeditor">{{$post->description}}</textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch" name="is_published" value="1" 
+                    {{$post->is_published ? 'checked' : ''}}>
+                    <label class="custom-control-label" for="customSwitch">Is published</label>
+                </div>
             </div>
 
             <div class="form-group">
