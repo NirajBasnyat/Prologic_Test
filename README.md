@@ -1,9 +1,28 @@
-## About this site
-For prologic solutions
+# Basic Test for Prologic 
+## Follow these steps to install this system
 
-```bash
-  to be added
-```
+**Clone the repo**
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+    git clone https://github.com/NirajBasnyat/Prologic_Test.git
+
+**To add composer.json (php dependencies)** 
+
+    composer install
+    
+ **To add Package.json (javascript dependencies)**
+ 
+    npm install
+
+**Copy Environment file**
+
+    cp .env.example .env
+
+**After the database is setup in env migrate table and seed data**
+
+    php artisan migrate --seed
+    
+**Run the server** 
+
+    php artisan serve
+
+
