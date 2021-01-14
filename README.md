@@ -17,7 +17,7 @@
 
     cp .env.example .env
 
-**After the database is setup in env migrate table and seed data**
+**After the database is setup in env; Migrate table and seed data**
 
     php artisan migrate --seed
     
