@@ -5,11 +5,11 @@
 
     git clone https://github.com/NirajBasnyat/Prologic_Test.git
 
-**To add composer.json (php dependencies)** 
+**To add php dependencies(vendor)** 
 
     composer install
     
- **To add Package.json (javascript dependencies)**
+ **To add javascript dependencies(node modules)**
  
     npm install
 
