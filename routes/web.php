@@ -11,7 +11,7 @@ Route::get('/category_post/{category_id}', [FrontendController::class,'category_
 
 //routes for auth users
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [FrontendController::class, 'dashboard'])->name('dashboard');
+    Route::get('/home', [FrontendController::class, 'dashboard'])->name('dashboard');
     Route::resource('post', PostController::class);
 });
 
