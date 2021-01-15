@@ -19,7 +19,7 @@
 
 **After the database is setup in env; Migrate table and seed data**
 
-    php artisan migrate --seede
+    php artisan migrate --seed
     
 **Run the server** 
 
